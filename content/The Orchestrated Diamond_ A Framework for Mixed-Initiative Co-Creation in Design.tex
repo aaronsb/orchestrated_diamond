@@ -1,0 +1,1688 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  12pt,
+  a4paper,
+  bibliography=totoc,
+  numbers=noenddot
+]{scrartcl}
+\usepackage{amsmath,amssymb}
+\usepackage[backend=biber,style=numeric,citestyle=numeric,natbib=true]{biblatex}
+\usepackage{csquotes}
+\addbibresource{references.bib}
+\usepackage{authblk}
+\usepackage{setspace}
+\usepackage{geometry}
+
+% Page geometry
+\geometry{
+  a4paper,
+  left=2.5cm,
+  right=2.5cm,
+  top=2.5cm,
+  bottom=2.5cm
+}
+
+% Line spacing
+\onehalfspacing
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\ifLuaTeX
+  \usepackage{luacolor}
+  \usepackage[soul]{lua-ul}
+\else
+  \usepackage{soul}
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{3} % enable section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+% Document metadata
+\title{The Orchestrated Diamond: A Framework for Mixed-Initiative Co-Creation in Design}
+\author{Aaron Bockelie}
+\affil{Independent Researcher, Wichita, Kansas}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+The Double Diamond (DD) design process, while a seminal contribution to
+design methodology, is increasingly ill-equipped for the speed,
+complexity, and data-rich environment of modern product development.
+This paper posits that the integration of Artificial Intelligence (AI)
+can address these limitations. The central contribution of this research
+is the proposal of a novel framework, The Orchestrated Diamond, which
+evolves the DD by integrating a dynamic spectrum of human-AI
+collaboration models. This framework maps specific interaction
+paradigms---AI-in-the-Loop (AITL), Human-Led Synthesis, Mixed-Initiative
+Co-Creation, and Human-in-the-Loop (HITL)---to the DD\textquotesingle s
+four phases: Discover, Define, Develop, and Deliver. This structured
+approach moves beyond informal metaphors for AI collaboration to offer a
+robust, efficient, and innovative methodology for design. The
+framework\textquotesingle s validity is established through a detailed
+analysis of its benefits in overcoming the DD\textquotesingle s core
+weaknesses, a frank assessment of its inherent challenges such as
+algorithmic bias and the need for new designer competencies, and by
+drawing parallels with empirical case studies from product development,
+service design, and architecture. The paper concludes that The
+Orchestrated Diamond offers a necessary evolution of design practice,
+reframing the designer\textquotesingle s role from that of a sole
+creator to a strategic orchestrator of a human-AI team. This has
+profound implications for the future of design as a collaborative,
+orchestrated process.
+\end{abstract}
+
+\textbf{Keywords:} Design methodology, Human-AI collaboration, Double Diamond, Mixed-initiative co-creation, Design process evolution, Artificial intelligence in design
+
+\tableofcontents
+\newpage
+
+\section{Introduction: The
+Confluence of Design Process and Artificial
+Intelligence}\label{section-1-introduction-the-confluence-of-design-process-and-artificial-intelligence}
+
+\subsection{The Imperative for Evolved
+Design
+Methodologies}\label{the-imperative-for-evolved-design-methodologies}
+
+The contemporary enterprise landscape is undergoing a tectonic shift,
+driven by the integration of Artificial Intelligence (AI) and automation
+into the very fabric of operational workflows.\cite{cogleus2025rise} This
+transition, termed "Automation 5.0" or the era of intelligent
+automation, moves beyond simple task execution to embrace systems
+capable of predictive decision-making, continuous self-learning, and
+sophisticated cognitive functions.\cite{researchgate2025evolution} This evolution is
+not merely incremental; it represents a fundamental rewiring of how
+organizations run and create value.\cite{mckinsey2025state} Enterprise
+systems, once static backbones, are now dynamic engines of insight and
+efficiency, leveraging AI for everything from supply chain optimization
+and personalized customer relationship management to automated HR
+processes and predictive maintenance.\cite{cogleus2025rise}
+
+Industry analysts have underscored the transformative scale of this
+change. Gartner, for instance, identifies generative AI as a
+general-purpose technology with a projected impact comparable to the
+steam engine, electricity, and the internet.\cite{gartner2025generative} This
+technology is poised to augment or automate core processes across a vast
+array of industries, including pharmaceutical discovery, manufacturing,
+media, architecture, and engineering.\cite{gartner2025generative} Forrester
+reports that agentic AI---systems capable of setting goals, making
+decisions, and taking action---is evolving generative AI from simply
+producing "words" to executing "actions," fundamentally changing how
+work gets done.\cite{nice2025forrester} As organizations increasingly embed
+these intelligent capabilities into their operations, the methodologies
+used to design the products, services, and systems that house them must
+necessarily evolve in parallel. Traditional design frameworks, conceived
+in a pre-AI era, risk becoming anachronistic, unable to fully harness
+the potential or mitigate the risks of this new technological paradigm.
+
+\subsection{The Paradox: Seminal
+Frameworks and New
+Paradigms}\label{the-paradox-seminal-frameworks-and-new-paradigms}
+
+At the heart of modern design practice lies the Double Diamond (DD), a
+process model popularized by the British Design Council in the
+mid-2000s.\cite{wikipedia2025double1} It has served as a foundational framework
+for a generation of designers, providing a simple, memorable, and
+visually intuitive map of the design journey \cite{designcouncil2025history}. Its
+core principle---a structured sequence of divergent and convergent
+thinking across four phases (Discover, Define, Develop, Deliver)---has
+offered a common language for designers to articulate and contextualize
+their work for clients and stakeholders \cite{wikipedia2025double2}.
+
+Concurrently, as AI tools have become more accessible, practitioners
+across various fields have developed informal, grassroots models to
+describe their new collaborative workflows. One of the most prevalent is
+the "AI Sandwich" \cite{nationaljurist2025ai}. This simple but powerful metaphor
+describes a Human-AI-Human interaction pattern: a human initiates a task
+with a specific intent (the top slice of bread), an AI system generates
+content, analysis, or options (the filling), and a human provides the
+critical review, refinement, and final judgment (the bottom
+slice) \cite{nationaljurist2025ai}. This model has found resonance in fields as
+diverse as legal education, where students are taught to bracket
+AI-generated content with their own analysis \cite{nationaljurist2025ai}, and
+creative writing, where the human acts as the essential element between
+AI-driven perception and action.\cite{medium2025symbiotic}
+
+The coexistence of the formal, top-down Double Diamond and the informal,
+bottom-up "AI Sandwich" reveals a significant paradox and a chasm
+between established design theory and emergent AI practice. While
+practitioners are creating ad-hoc mental models to cope with powerful
+new tools, the formal methodologies they are trained in often fail to
+account for this new reality. This paper addresses the central problem
+arising from this disconnect: the venerable but increasingly challenged
+Double Diamond process is ill-equipped to manage the speed, complexity,
+and data-rich environment of modern development, while the informal
+models of AI collaboration lack the structure and theoretical rigor
+needed for systematic and scalable implementation.
+
+\subsection{Thesis Statement and Research
+Trajectory}\label{thesis-statement-and-research-trajectory}
+
+This paper posits that the documented limitations of the Double Diamond
+can be systematically addressed by moving beyond informal metaphors and
+formally integrating a spectrum of human-AI collaboration models into
+its structure \cite{arxiv2025human}. The introduction of AI does not merely add a new tool to
+a designer\textquotesingle s toolkit; it fundamentally shifts the nature
+of the design process itself, from a linear execution of steps to a
+dynamic management of a complex workflow. This necessitates a paradigm
+shift from process visualization to workflow
+orchestration \cite{ibm2025orchestration}.
+
+To this end, we propose a new framework, \textbf{The Orchestrated
+Diamond}, which reframes the design process not as a static, sequential
+map, but as a dynamic orchestration of human and machine intelligence.
+This framework retains the familiar four phases of the Double Diamond
+but reconceptualizes them as distinct modes of collaboration, each
+requiring a specific and appropriate form of human-AI partnership.
+
+The research will proceed as follows. Section 2 provides a critical
+deconstruction of the Double Diamond, examining its history, principles,
+and well-documented limitations, thereby establishing the clear need for
+its evolution. Section 3 develops a formal taxonomy of human-AI
+collaboration models, moving from the "AI Sandwich" metaphor to a
+rigorous analysis of Human-in-the-Loop (HITL), AI-in-the-Loop (AITL),
+and Mixed-Initiative systems to provide a solid theoretical foundation.
+Section 4 details the proposed Orchestrated Diamond framework phase by
+phase, specifying the nature of the human-AI collaboration at each
+stage. Section 5 validates the framework by articulating its benefits,
+acknowledging its inherent challenges, and drawing parallels to
+empirical evidence and case studies where elements of this orchestrated
+approach are already yielding significant value. Finally, Section 6
+discusses the broader implications of this framework for design
+practice, terminology, and future research in an era of increasingly
+agentic AI.
+
+\section{A Critical Re-examination
+of the Double Diamond
+Process}\label{section-2-a-critical-re-examination-of-the-double-diamond-process}
+
+\subsection{Origins and Enduring
+Principles}\label{origins-and-enduring-principles}
+
+The Double Diamond design process model, while widely associated with
+the British Design Council, has a rich intellectual lineage. The Council
+popularized the model in 2004-2005 as a way to codify and visualize the
+design processes used within the organization and make them accessible
+to a broader audience.\cite{wikipedia2025double1} The model itself was an
+adaptation of the divergence-convergence model proposed in 1996 by the
+Hungarian-American linguist and systems scientist Béla H.
+Bánáthy.\cite{wikipedia2025double1} Bánáthy\textquotesingle s work, in turn,
+built upon decades of research into problem-solving and design theory
+from luminaries such as John Dewey, who emphasized learning through
+inquiry; Alex Osborn and Sidney Parnes, who proposed divergent and
+convergent activities in their Creative Problem Solving model; and
+Herbert Simon, who defined design as devising actions to change existing
+situations into preferred ones \cite{medium2025double}.
+
+The enduring power of the Double Diamond lies in its elegant simplicity.
+It presents the design process through two conjoined diamonds, each
+representing a cycle of divergent thinking (exploring an issue widely)
+followed by convergent thinking (taking focused
+action) \cite{wikipedia2025double2}. This structure is broken down into four
+memorable, alliterative phases \cite{designcouncil2025history}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Discover:} The first divergent phase, focused on understanding
+  the issue through user research methods like interviews, surveys, and
+  field studies, rather than making assumptions \cite{wikipedia2025double2}.
+\item
+  \textbf{Define:} The first convergent phase, where insights from
+  discovery are synthesized to frame a clear, actionable problem
+  definition or design brief \cite{wikipedia2025double2}.
+\item
+  \textbf{Develop:} The second divergent phase, focused on generating a
+  wide range of potential solutions to the defined problem, often
+  through co-design and seeking inspiration from diverse
+  sources \cite{wikipedia2025double2}.
+\item
+  \textbf{Deliver:} The second convergent phase, where different
+  solutions are tested at a small scale, refined, and prepared for
+  launch \cite{wikipedia2025double2}.
+\end{enumerate}
+
+The primary objective of the Design Council was to create a framework
+that was easy to memorize, share, and use to contextualize the work of
+designers for clients and non-designers \cite{designcouncil2025history}. In this, it
+has been remarkably successful, becoming an accepted part of the global
+design language \cite{designcouncil2025history}.
+
+\subsection{A Litany of Limitations in
+Modern
+Practice}\label{a-litany-of-limitations-in-modern-practice}
+
+Despite its widespread adoption, the Double Diamond has faced persistent
+and significant criticism, particularly as the complexity of design
+challenges and the pace of development have increased. These critiques
+reveal a model that, while conceptually elegant, often struggles to
+align with the realities of modern product and service development.
+
+A primary critique is the model\textquotesingle s \textbf{linearity and
+abstraction}. The clean, sequential diagram belies the often messy,
+chaotic, and iterative nature of real-world creative
+work \cite{medium2025double}. Design is rarely a straight-lined process; it
+involves false starts, backtracking, and multiple cycles of reframing as
+new insights emerge.\cite{danramsden2025limitations} The model\textquotesingle s
+high level of abstraction, while making it memorable, renders it less
+useful for answering specific, practical questions about process. As one
+critic notes, it often becomes a "black box masquerading as a glass
+box," obscuring the actual art and craft of design behind a facade of
+ordered simplification.\cite{danramsden2025limitations} This linearity is a holdover
+from a more waterfall-style approach to projects, which is fundamentally
+at odds with the agile and iterative methods prevalent in software and
+digital product development today.
+
+Perhaps the most damaging critique is the \textbf{feasibility and
+reality gap}. The model is heavily centered on user needs, with little
+to no formal consideration for technical feasibility, budget
+constraints, or business viability until late in the
+process \cite{reddit2025double}. This creates what practitioners describe as
+a "massive disconnect between what users want, and what can
+realistically be implemented" \cite{reddit2025double}. In many projects,
+teams spend the first diamond deeply understanding users and the second
+diamond brainstorming innovative solutions, only to discover during the
+"Deliver" phase that "75\% of the ideas we came up with would need to be
+custom built, and will therefore cost too much" \cite{reddit2025double}.
+This often results in teams discarding their ambitious, user-centric
+designs and reverting to standard, out-of-the-box UI and features,
+rendering much of the initial discovery work moot \cite{reddit2025double}.
+This flaw is particularly acute in corporate environments where
+stakeholders often have a solution in mind and view extensive,
+open-ended discovery as "unnecessary friction" or a "waste of
+time".\cite{smartinterface2025double}
+
+Furthermore, the original model suffers from a \textbf{lack of
+measurement and post-launch feedback loops}. It was conceived as an
+"idea funnel that transmutes questions into solutions," but without an
+explicit mechanism for measuring the success of those solutions in the
+real world \cite{medium2025double}. In practice, design work is often
+considered complete once a prototype is tested and handed off to
+development \cite{uxdesign2025why}. However, this ignores the crucial
+design work that happens post-hand-off, as inevitable edge cases, error
+states, and technical hurdles emerge during the build phase. Without a
+formal process for continuous design involvement, this work is often
+rushed or squeezed in, leading to a degradation in quality and strained
+relationships between design and development teams \cite{uxdesign2025why}.
+
+Finally, the model is often seen as \textbf{insufficient for the
+complexity of modern systems design}. The challenges designers face
+today with intricate services and systems have left the Double Diamond
+"a bit short of breath" \cite{medium2025double}. Its simple structure does
+not adequately account for the high levels of ambiguity and
+non-linearity inherent in discontinuous innovation, nor does it
+explicitly mention other crucial forms of design thinking, such as
+abductive reasoning, or foundational concepts like
+empathy \cite{researchgate2025design}. This has led even the Design Council itself
+to explore successors, such as the Systemic Design Framework, that are
+better equipped to handle these complexities \cite{medium2025double}.
+
+The common thread running through all these critiques is a fundamental
+temporal disconnect. The model\textquotesingle s structure rigidly
+separates problem-finding (the first diamond) from solution-building
+(the second diamond). This sequential, waterfall-like separation is the
+root cause of its major flaws. If technical feasibility (a
+solution-space constraint) were considered during the problem definition
+phase, the feasibility gap would be mitigated. If feedback from the
+development and delivery phases could easily and continuously loop back
+to refine the problem definition, the lack of iterative feedback would
+be solved. The core issue is not the four phases themselves, but their
+strict segregation into two distinct, sequential stages.
+
+\subsection{Reactive Evolution: The
+Emergence of the Triple
+Diamond}\label{reactive-evolution-the-emergence-of-the-triple-diamond}
+
+In response to these well-documented failings, the design community has
+proposed various extensions, most notably under the umbrella of the
+"Triple Diamond".\cite{researchgate2025triple} It is not a single, unified model
+but rather a collection of interpretations that attempt to patch the
+perceived holes in the original framework.\cite{equalexperts2025innovation}
+
+One common interpretation adds a third diamond focused on
+\textbf{experimentation and implementation}. This version, proposed by
+practitioners like Adam Gray, inserts a new diamond between "Develop"
+and "Deliver" or expands "Deliver" into a full diamond of its
+own.\cite{smartinterface2025double} The goal is to move beyond a simple tested
+prototype to a live, released MVP. This third diamond encompasses the
+detailed design of all screens, flows, and copy, followed by the build
+and the subsequent gathering of qualitative and quantitative data from a
+live release \cite{uxdesign2025why}. This directly addresses the critique
+that the Double Diamond ends too early and lacks a robust post-launch
+feedback mechanism.
+
+A second interpretation places an additional diamond \emph{before} the
+traditional two, focusing on \textbf{opportunity and
+strategy}.\cite{equalexperts2025innovation} This version acknowledges that a design
+process doesn\textquotesingle t begin with a given problem; it begins
+with the strategic work of identifying which problem is worth solving in
+the first place. This initial diamond would involve divergent thinking
+to identify potential opportunities and convergent thinking to define a
+clear strategy and business case before the "Discover" phase even
+begins.
+
+A third variation, described by Sophia Prater, inserts a central diamond
+focused on \textbf{structuring insights} \cite{medium2025double}. This
+diamond sits between "Define" and "Develop" and is dedicated to the
+rigorous work of structuring research insights to properly inform the
+design of complex systems, particularly around information architecture.
+
+While these Triple Diamond models offer valuable additions by
+formalizing stages that were implicit or missing in the original, they
+are ultimately additive patches. They extend the linear chain of the
+process---adding a stage before, after, or in the middle---but they do
+not fundamentally alter its sequential nature. They do not create the
+kind of dynamic, interwoven feedback loops that are necessary for truly
+agile and responsive development in a technologically complex
+environment. A more radical evolution is required, one that does not
+simply add another diamond but weaves new capabilities throughout the
+entire process, breaking down the rigid walls between the phases. This
+is the opportunity that the structured integration of AI presents.
+
+\section{A Taxonomy of Human-AI
+Collaboration in Creative and Analytical
+Workflows}\label{section-3-a-taxonomy-of-human-ai-collaboration-in-creative-and-analytical-workflows}
+
+\subsection{Deconstructing the "AI
+Sandwich": From Metaphor to
+Model}\label{deconstructing-the-ai-sandwich-from-metaphor-to-model}
+
+The "AI Sandwich" has emerged as a popular and intuitive metaphor for
+describing a collaborative human-AI workflow \cite{nationaljurist2025ai}. Its
+common interpretation involves a three-part structure: a human provides
+the initial input, direction, or question (the top slice of bread); the
+AI system performs a task, such as generating text, analyzing data, or
+creating an image (the filling); and the human returns to critique,
+refine, fact-check, and provide the final judgment (the bottom
+slice) \cite{nationaljurist2025ai}. This simple concept has proven remarkably
+versatile, finding application in diverse domains. In legal education,
+Professor Dyane O\textquotesingle Leary uses it to teach law students
+that they must be the "bread on both sides," responsible for both the
+initial framing of a legal query and the critical analysis of the
+AI\textquotesingle s output \cite{nationaljurist2025ai}. In creative contexts,
+the human is described as the "cheese in the sandwich," making the
+crucial decisions between AI-driven perception (research) and AI-driven
+action (writing).\cite{medium2025symbiotic}
+
+While powerful as a mental model, the "sandwich" metaphor lacks the
+precision required for building robust, scalable systems. A more
+formalized approach can be seen in the concept of a "Model Context
+Protocol" (MCP).\cite{bilotta2025model} An MCP is a structured framework
+for managing the information fed to an AI. It acts as a detailed "recipe
+card" (the protocol) and a well-organized set of ingredients (the
+context), ensuring that the AI\textquotesingle s output is consistent
+and aligned with the user\textquotesingle s intent. The MCP framework
+breaks down context into four key categories: System Context (what the
+AI always knows), User Context (personalization), Conversation Context
+(the ongoing interaction), and Task Context (the immediate
+goal).\cite{bilotta2025model} This moves the discourse from a simple
+metaphor to a structured model of interaction. By formally classifying
+this pattern within established Human-Computer Interaction (HCI) theory,
+we can see that the "AI Sandwich" is a practical, user-friendly
+description of an AI-in-the-Loop (AITL) workflow. The human is in
+control, initiating the process and making the final judgment, which
+directly maps to the AITL definition where the human retains ultimate
+decision-making authority \cite{arxiv2025human}.
+
+\subsection{The Spectrum of Agency: HITL
+vs.
+AITL}\label{the-spectrum-of-agency-hitl-vs.-aitl}
+
+To build a more sophisticated framework, it is essential to move beyond
+a single interaction pattern and understand the full spectrum of
+human-AI collaboration \cite{researchgate2025collaboration}. The most fundamental distinction in HCI
+literature is based on the locus of control and decision-making
+authority, primarily captured in the concepts of Human-in-the-Loop
+(HITL) and AI-in-the-Loop (AITL) \cite{arxiv2025human}.
+
+\textbf{Human-in-the-Loop (HITL)} systems are those in which the AI
+system drives the decision-making process, but a human is integrated
+into the loop to provide supervision, validation, or intervention for
+edge cases \cite{arxiv2025human}. In this model, the AI is in control of
+the operational flow, and human input is used to "guide" the model,
+correct its errors, or handle tasks that fall below a certain confidence
+threshold \cite{arxiv2025human}. This architecture is prevalent in
+applications where accuracy and reliability are paramount, such as
+medical imaging analysis, content moderation, and the labeling of
+training data for supervised machine learning.\cite{googlecloud2025hitl} The
+human acts as an oracle, a weak supervisor, or a final quality-control
+gatekeeper \cite{arxiv2025human}.
+
+\textbf{AI-in-the-Loop (AITL)} systems, conversely, invert this
+relationship \cite{arxiv2025human}. In an AITL model, the human retains
+full control and ultimate decision-making authority, while the AI acts
+as an assistant or an augmentative tool to enhance the
+human\textquotesingle s capabilities \cite{arxiv2025human}. The AI system
+provides decision support, automates routine sub-tasks, or surfaces
+insights for human interpretation, but it does not make the final
+decision \cite{ibm2025ai}. This is the paradigm of AI as a smart
+tool---a sophisticated calculator or a research assistant---that
+enhances human performance without usurping human agency. As
+established, the "AI Sandwich" is a classic AITL pattern.
+
+The distinction between HITL and AITL is not merely academic; it is a
+critical design choice that dictates the architecture, user interface,
+and risk profile of a system \cite{arxiv2025human}. The decision hinges on
+whether the primary goal is to automate a process with human oversight
+(HITL) or to augment human judgment with AI assistance (AITL).
+
+\subsection{Towards Partnership:
+Mixed-Initiative and Collaborative
+Intelligence}\label{towards-partnership-mixed-initiative-and-collaborative-intelligence}
+
+The HITL and AITL models, while useful, primarily describe a
+master-servant dynamic. More advanced forms of collaboration aim for a
+true partnership, where the roles are more fluid and synergistic.
+
+\textbf{Mixed-Initiative (MI)} systems are defined by the ability of
+both the human and the AI to proactively contribute to a shared goal,
+with the conversational or creative "initiative" shifting between
+them.\cite{aimagazine2025mixed} In an MI system, the AI is not merely
+responding to explicit commands; it can take the lead, make unsolicited
+suggestions, propose alternative paths, and actively shape the direction
+of the work.\cite{goldsmiths2025mixed} This creates a dynamic, peer-to-peer
+interaction that is essential for co-creative tasks like brainstorming,
+game level design, or collaborative writing, where the goal is to
+generate novel artifacts through a real-time, improvisational
+partnership.\cite{researchgate2025boosting} The system and the human become
+collaborators who iteratively build upon each other\textquotesingle s
+contributions.\cite{researchgate2025implications}
+
+\textbf{Collaborative Intelligence (CI)} and \textbf{Human-AI Teaming
+(HAIT)} represent a socio-technical perspective on this partnership,
+viewing the AI not just as a tool or a system, but as a genuine team
+member.\cite{pmc2025defining} CI is defined by the synergistic combination
+of human and AI capabilities to achieve outcomes that would be
+unattainable by either agent alone.\cite{tandfonline2025collaborative} This approach
+focuses on augmenting human intelligence, freeing people from
+automatable and repetitive tasks so they can focus on their unique
+strengths: creativity, strategic thinking, empathy, and ethical
+judgment.\cite{smythos2025exploring} Successful HAIT depends on factors that
+are familiar from human teams: shared goals, interdependence, clear
+communication, evolving shared mental models, and, crucially, mutual
+trust.\cite{pmc2025defining}
+
+These different models are not mutually exclusive categories but rather
+points along a \textbf{spectrum of agency}. This spectrum progresses
+from low AI agency (AITL, where the AI is a responsive tool), to
+moderate AI agency (HITL, where the AI can execute processes but is
+gated by human approval), to peer-level agency (Mixed-Initiative, where
+the AI is a proactive partner), and ultimately towards fully agentic AI
+(where the AI can set and pursue its own goals with minimal
+oversight).\cite{nice2025forrester} A sophisticated design framework should
+not be locked into a single mode of interaction. Instead, it should
+strategically select the appropriate level of AI agency for the specific
+task at hand within the broader workflow. This dynamic selection is the
+core principle that enables the transition from a simple design process
+to an orchestrated one.
+
+\textbf{Table 1: A Comparative Analysis of Human-AI Interaction Models}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Model
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Primary Locus of Control
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+AI\textquotesingle s Role
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Human\textquotesingle s Role
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Core Analogy
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Primary Goal
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Supporting Sources
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{AI-in-the-Loop (AITL)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Human
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Assistant / Tool / Augmentation Layer
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Decision-Maker / Orchestrator / User
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+AI as a smart tool (e.g., spell-checker, research assistant)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Augment Human Performance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\cite{arxiv2025human}
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Human-in-the-Loop (HITL)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+AI
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Driver / Executor / Autonomous Process
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Supervisor / Validator / Exception Handler
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+AI as a self-driving car with a human monitor
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Ensure Accuracy \& Reliability
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\cite{arxiv2025human}
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Mixed-Initiative (MI)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Shifting / Shared
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Partner / Collaborator / Co-Creator
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Co-Creator / Peer / Creative Director
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+AI as a brainstorming partner or duet musician
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Co-Create Novelty \& Explore Possibilities
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\cite{researchgate2025boosting}
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Collaborative Intelligence (CI) / Human-AI Teaming (HAIT)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Shared
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Synergistic Teammate / Cognitive Enhancer
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Strategist / Ethical Guide / Team Leader
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+AI as a full team member with specialized skills
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Achieve Superior Synergistic Outcomes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\cite{pmc2025defining}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\end{longtable}
+
+\section{The Orchestrated Diamond:
+A Proposed Framework for AI-Integrated
+Design}\label{section-4-the-orchestrated-diamond-a-proposed-framework-for-ai-integrated-design}
+
+\subsection{Framework Overview: From
+Sequential Phases to Orchestrated
+Modes}\label{framework-overview-from-sequential-phases-to-orchestrated-modes}
+
+The proposed framework, The Orchestrated Diamond, retains the four
+familiar phases of the Double Diamond---Discover, Define, Develop, and
+Deliver---for their established conceptual clarity and mnemonic
+value \cite{designcouncil2025history}. The fundamental innovation of this framework
+lies in the reconceptualization of these phases. They are no longer
+treated as rigid, linear steps in a process but as distinct
+
+\textbf{modes of collaboration}, each requiring a different
+configuration of human-AI interaction. This approach draws directly from
+the taxonomy of collaboration models established in Section 3. The role
+of the designer is elevated from that of a process-follower to that of
+an \textbf{orchestrator}, who strategically manages the workflow and
+facilitates the transitions between these collaborative modes. This
+dynamic structure directly addresses the core critique of the Double
+Diamond\textquotesingle s restrictive linearity and its failure to
+represent the iterative nature of modern design
+work \cite{medium2025double}.
+
+\subsection{Phase 1 - Discover:
+AI-Assisted Inquiry (AITL
+Mode)}\label{phase-1---discover-ai-assisted-inquiry-aitl-mode}
+
+The first phase of the framework is dedicated to the divergent
+exploration of the problem space. The goal is to cast a wide net,
+gathering as much information as possible to understand the context,
+user needs, and market landscape.
+
+\begin{itemize}
+\item
+  \textbf{Collaboration Model:} This phase operates in an
+  \textbf{AI-in-the-Loop (AITL)} mode. The human researcher or designer
+  maintains full strategic control over the inquiry, defining the
+  research questions, setting the scope, and critically evaluating the
+  information that is gathered. The AI functions as a powerful and
+  tireless research assistant, dramatically accelerating the speed and
+  expanding the breadth of the discovery process.
+\item
+  \textbf{Human Role:} The human acts as a \textbf{Strategist,
+  Researcher, and Prompter}. They are responsible for designing the
+  research plan, formulating precise queries for the AI systems, and
+  applying their domain expertise to interpret the outputs.
+\item
+  \textbf{AI Role:} The AI\textquotesingle s role is that of a
+  \textbf{Research Accelerator}. It automates and augments
+  data-intensive research tasks that are traditionally time-consuming
+  and labor-intensive. Specific AI-powered tasks include:
+
+  \begin{itemize}
+  \item
+    \textbf{Large-Scale Data Analysis:} AI algorithms can analyze vast,
+    unstructured datasets, such as thousands of customer support
+    tickets, online reviews, or social media comments, to perform
+    sentiment analysis and identify recurring themes or pain
+    points.\cite{cogleus2025rise}
+  \item
+    \textbf{User Research Augmentation:} Generative AI can assist in
+    creating initial drafts of interview scripts or survey
+    questions.\cite{cuny2025combining} After interviews are conducted,
+    AI-powered tools can provide automated transcriptions and summaries,
+    freeing the researcher to focus on the interaction itself and
+    accelerating the initial analysis.\cite{ibm2025workflow}
+  \item
+    \textbf{Market and Competitive Analysis:} AI can rapidly scan and
+    synthesize information about competitor products, market trends, and
+    relevant academic or industry literature, providing a comprehensive
+    landscape analysis in a fraction of the time required for manual
+    research.\cite{maze2025double}
+  \end{itemize}
+\item
+  \textbf{Connection to DD Critique:} This mode directly enhances the
+  traditional "Discover" phase. By leveraging AI, a design team can
+  conduct a far wider and deeper divergent search than is manually
+  feasible within typical project constraints, leading to a richer and
+  more evidence-based understanding of the problem space from the
+  outset.
+\end{itemize}
+
+\subsection{Phase 2 - Define: Human-Led
+Synthesis (AITL/Human-Control
+Mode)}\label{phase-2---define-human-led-synthesis-aitlhuman-control-mode}
+
+The second phase is a convergent activity focused on making sense of the
+vast information gathered during discovery and distilling it into a
+clear, concise, and actionable problem statement.
+
+\begin{itemize}
+\item
+  \textbf{Collaboration Model:} This phase operates primarily in an AITL
+  mode but with an explicit emphasis on \textbf{Human-Led Synthesis}.
+  While AI can assist in organizing data, the ultimate act of defining
+  the problem---of framing the challenge based on strategic goals,
+  ethical considerations, and empathetic understanding---is a uniquely
+  human responsibility that cannot be delegated.
+\item
+  \textbf{Human Role:} The human is the \textbf{Synthesizer,
+  Sense-Maker, and Decision-Maker}. They use their critical thinking,
+  domain expertise, and strategic insight to interpret the patterns
+  surfaced by the AI, identify the core user need or opportunity, and
+  frame the definitive problem statement that will guide the rest of the
+  project.\cite{danramsden2025limitations}
+\item
+  \textbf{AI Role:} The AI serves as a \textbf{Pattern Recognition
+  Tool}. It helps to structure and process the large volume of raw data
+  from the Discover phase, making it more manageable for human analysis.
+  Specific AI-powered tasks include:
+
+  \begin{itemize}
+  \item
+    \textbf{AI-Assisted Affinity Mapping:} Instead of manually sorting
+    hundreds of digital sticky notes, AI can process raw research data
+    (e.g., interview excerpts, survey responses) and suggest thematic
+    clusters or affinity groups, significantly accelerating the
+    synthesis process.\cite{maze2025double}
+  \item
+    \textbf{Insight Identification:} AI can perform statistical analysis
+    to identify correlations or anomalies in the data that might not be
+    immediately apparent to a human analyst, pointing to potential areas
+    of interest.\cite{cogleus2025rise}
+  \item
+    \textbf{Problem Statement Ideation:} Once the human has identified
+    the core insight, generative AI can be used as a tool to brainstorm
+    multiple phrasings of the problem statement or to generate a range
+    of "How Might We" (HMW) questions to explore different angles of the
+    challenge.\cite{cuny2025combining}
+  \end{itemize}
+\item
+  \textbf{Connection to DD Critique:} This mode directly addresses the
+  critique that the Double Diamond is too abstract and can lead to a
+  "disordered mess".\cite{danramsden2025limitations} By using AI to bring structure
+  to the chaos of raw research data, the framework allows the human
+  designer to focus on the higher-order cognitive task of synthesis and
+  definition, resulting in a more concrete, evidence-backed problem
+  statement.
+\end{itemize}
+
+\subsection{Phase 3 - Develop:
+Mixed-Initiative Co-Creation (MI
+Mode)}\label{phase-3---develop-mixed-initiative-co-creation-mi-mode}
+
+The third phase marks the second point of divergence, where the team
+explores a wide array of potential solutions to the clearly defined
+problem.
+
+\begin{itemize}
+\item
+  \textbf{Collaboration Model:} This phase shifts into a
+  \textbf{Mixed-Initiative (MI)} mode. This is a true human-AI
+  partnership where both agents can proactively contribute ideas and
+  build upon each other\textquotesingle s work. The creative initiative
+  flows back and forth between the human designer and the AI system.
+\item
+  \textbf{Human Role:} The human acts as a \textbf{Creative Director,
+  Prompter, Curator, and Collaborator}. They set the creative direction,
+  define the constraints for the AI, provide initial sparks of
+  inspiration, and then curate, combine, and refine the multitude of
+  options generated by the AI partner.\cite{researchgate2025implications}
+\item
+  \textbf{AI Role:} The AI functions as a \textbf{Creative Partner and
+  Ideation Engine}. Its role is not just to execute commands but to
+  actively participate in the creative process. Specific AI-powered
+  tasks include:
+
+  \begin{itemize}
+  \item
+    \textbf{Generative Design and Ideation:} AI systems can generate a
+    vast number of design concepts based on a set of constraints (e.g.,
+    materials, cost, performance metrics, aesthetic style) provided by
+    the human designer. This applies to UI layouts, product forms,
+    architectural plans, and more.\cite{invozone2025collaborative} This capability
+    helps teams break free from cognitive biases and explore a much
+    broader solution space.\cite{ideou2025intersection}
+  \item
+    \textbf{Augmented Brainstorming:} The AI can serve as an
+    inexhaustible brainstorming partner, suggesting unconventional
+    solutions, providing visual inspiration, or developing variations on
+    a human-generated idea.\cite{smythos2025exploring}
+  \item
+    \textbf{Rapid Visualization:} Generative AI tools like Midjourney or
+    Stable Diffusion can instantly create high-fidelity visualizations
+    of abstract concepts, facilitating clearer communication within the
+    team and allowing for faster evaluation and iteration of
+    ideas.\cite{researchgate2025thinking}
+  \end{itemize}
+\item
+  \textbf{Connection to DD Critique:} This mode provides a powerful
+  solution to the DD\textquotesingle s critical feasibility
+  gap \cite{reddit2025double}. By incorporating technical, financial, and
+  material constraints directly into the generative design prompts,
+  feasibility becomes an integral part of the ideation process, not an
+  afterthought. This ensures that the divergent exploration of solutions
+  is grounded in real-world viability from the start.
+\end{itemize}
+
+\subsection{Phase 4 - Deliver:
+AI-Augmented Validation (HITL
+Mode)}\label{phase-4---deliver-ai-augmented-validation-hitl-mode}
+
+The final phase is one of convergence, where the most promising
+solutions from the Develop phase are prototyped, tested, refined, and
+prepared for implementation.
+
+\begin{itemize}
+\item
+  \textbf{Collaboration Model:} This phase primarily utilizes a
+  \textbf{Human-in-the-Loop (HITL)} model. AI systems are given the
+  autonomy to execute complex and repetitive tasks, such as generating
+  code for prototypes or analyzing user testing data. However, the human
+  designer must remain "in the loop" to validate the outputs, interpret
+  the results, provide quality control, and make the final decisions on
+  the solution\textquotesingle s viability.
+\item
+  \textbf{Human Role:} The human is the \textbf{Validator, Ethical
+  Overseer, and Quality Control Manager}. They are responsible for
+  reviewing AI-generated prototypes for accuracy and usability,
+  interpreting the nuances of user feedback that an AI might miss,
+  ensuring the final product is ethical and robust, and making the
+  ultimate go/no-go decision \cite{uxdesign2025why}.
+\item
+  \textbf{AI Role:} The AI\textquotesingle s role is that of a
+  \textbf{Prototyping and Testing Engine}. It dramatically accelerates
+  the iterative cycles of building and testing. Specific AI-powered
+  tasks include:
+
+  \begin{itemize}
+  \item
+    \textbf{Rapid Prototyping and Code Generation:} AI tools can
+    transform static design mockups into interactive prototypes or even
+    generate front-end code, significantly reducing development time for
+    testable artifacts.\cite{logrocket2025designers}
+  \item
+    \textbf{Automated and Predictive Testing:} AI can automate various
+    forms of testing, such as simulating diverse user scenarios,
+    checking for accessibility compliance, or analyzing A/B test
+    results.\cite{ideou2025intersection} Predictive analytics can be used on
+    prototype usage data to forecast user satisfaction or identify
+    potential friction points before a full-scale
+    launch.\cite{logrocket2025designers}
+  \item
+    \textbf{Feedback Analysis:} AI can process large volumes of user
+    feedback from testing sessions, summarizing key themes and
+    sentiments to help designers quickly identify areas for
+    improvement.\cite{ipm2025impact}
+  \end{itemize}
+\item
+  \textbf{Connection to DD Critique:} This mode directly addresses the
+  Double Diamond\textquotesingle s lack of explicit and efficient
+  feedback loops \cite{medium2025double}. The sheer speed of AI-augmented
+  prototyping and validation enables teams to conduct many more, and
+  much faster, iterative cycles than is possible with traditional
+  methods, leading to a more refined and robust final product.
+\end{itemize}
+
+\textbf{Table 2: Mapping AI Roles and Tools to the Orchestrated Diamond
+Framework}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Phase
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Core Activity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+AI Collaboration Model
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Human\textquotesingle s Primary Role
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+AI\textquotesingle s Primary Role
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Example AI-Powered Tasks \& Tools
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Discover}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Divergent Research
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+AI-in-the-Loop (AITL)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Research Strategist
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Research Accelerator
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+- Market trend analysis with predictive analytics platforms. - Sentiment
+analysis of user reviews using NLP tools. - Automated transcription and
+summarization of user interviews (e.g., Otter.ai).
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Define}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Convergent Synthesis
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Human-Led Synthesis (AITL)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Sense-Maker \& Decider
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pattern Recognition Tool
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+- AI-assisted affinity clustering of research data. - Generating "How
+Might We" questions from insights (e.g., ChatGPT). - Identifying data
+correlations with business intelligence tools.
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Develop}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Divergent Ideation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Mixed-Initiative (MI)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Creative Director \& Curator
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Creative Partner
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+- Generative design for physical products or architecture (e.g.,
+Autodesk Forma). - Rapid concept visualization and mood boarding (e.g.,
+Midjourney, Stable Diffusion). - Brainstorming unconventional solutions
+with a large language model.
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Deliver}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Convergent Validation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Human-in-the-Loop (HITL)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Validator \& Ethical Overseer
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Prototyping \& Testing Engine
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+- Transforming mockups into interactive prototypes (e.g., Uizard, Framer
+AI). - Automated accessibility and usability testing. - Analyzing A/B
+test results and predicting user behavior.
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\end{longtable}
+
+\section{Framework Validation:
+Benefits, Challenges, and Empirical
+Parallels}\label{section-5-framework-validation-benefits-challenges-and-empirical-parallels}
+
+\subsection{Articulated Benefits:
+Addressing the Double Diamond\textquotesingle s
+Deficiencies}\label{articulated-benefits-addressing-the-double-diamonds-deficiencies}
+
+The proposed Orchestrated Diamond framework is not merely a theoretical
+exercise; it is designed to directly address the most pressing and
+well-documented deficiencies of the traditional Double Diamond model. By
+structuring the design process as a series of distinct human-AI
+collaborative modes, it offers tangible benefits.
+
+First, the framework \textbf{overcomes the problem of rigid linearity}.
+The original DD\textquotesingle s sequential nature is a poor fit for
+agile environments \cite{medium2025double}. The Orchestrated Diamond is
+inherently iterative. The speed and low cost of AI-augmented prototyping
+and testing in the "Deliver" phase make it feasible to execute rapid
+feedback loops. An insight from testing can immediately inform a new
+round of ideation in the "Develop" phase or even trigger a reframing of
+the problem in the "Define" phase, breaking down the artificial walls
+between the diamonds.
+
+Second, it systematically \textbf{bridges the feasibility gap}. A major
+failure of the DD is its tendency to produce innovative but ultimately
+unfeasible solutions by deferring technical and business constraints
+until the end of the process \cite{reddit2025double}. The Orchestrated
+Diamond integrates feasibility from the outset. In the "Develop" phase,
+the Mixed-Initiative co-creation process can be constrained by
+parameters such as cost, materials, or manufacturing techniques,
+ensuring that the generated ideas are grounded in
+reality.\cite{researchgate2025impact} Furthermore, the AI-Augmented Validation in
+the "Deliver" phase allows for low-cost, high-fidelity simulation and
+testing before significant engineering resources are committed,
+de-risking the entire development lifecycle.\cite{logrocket2025designers}
+
+Third, the framework \textbf{integrates measurement and validation as a
+core component}. The original DD was criticized for lacking explicit
+mechanisms for measuring success or iterating
+post-launch \cite{medium2025double}. The Orchestrated
+Diamond\textquotesingle s "Deliver" phase is built entirely around the
+principles of testing, data analysis, and validation. This embeds a
+data-driven, evidence-based culture into the design process, ensuring
+that decisions are based on performance metrics rather than solely on
+intuition. This structure provides the explicit feedback loops that the
+original model lacks.\cite{ideou2025intersection}
+
+\subsection{Inherent Challenges and
+Mitigation
+Strategies}\label{inherent-challenges-and-mitigation-strategies}
+
+Adopting the Orchestrated Diamond framework is not without its own set
+of challenges. The integration of AI introduces new complexities and
+risks that must be proactively managed. However, the very structure of
+the framework provides a means of mitigation.
+
+A primary concern is \textbf{algorithmic bias and ethical integrity}. AI
+models are trained on historical data and can inadvertently learn and
+amplify existing societal biases related to race, gender, or other
+protected characteristics.\cite{smythos2025exploring} An AI tool used in the
+"Discover" phase might surface biased insights, or a generative tool in
+the "Develop" phase might produce stereotypical imagery. The framework
+mitigates this risk by formally defining the human\textquotesingle s
+role as an
+
+\textbf{Ethical Overseer}, particularly in the Human-Led Synthesis
+("Define") and HITL Validation ("Deliver") phases. These phases act as
+critical checkpoints where human judgment is explicitly required to
+scrutinize AI outputs for fairness, transparency, and accountability, in
+line with established ethical AI principles.\cite{unesco2025ethics}
+
+Another significant challenge is \textbf{data quality and privacy}. The
+efficacy of the entire framework is contingent on access to
+high-quality, clean, and relevant data, which remains a major
+organizational hurdle for many enterprises.\cite{researchgate2025design}
+Furthermore, the use of user data raises significant privacy concerns
+that require robust data governance and compliance with regulations like
+GDPR.\cite{ideou2025intersection} The framework addresses this by making data
+strategy an explicit consideration. The "Define" phase, for instance,
+must include an assessment of data availability and quality as a key
+constraint on the problem definition.
+
+Finally, there is the risk of \textbf{deskilling and over-reliance} on
+AI. Practitioners and academics alike express concern that an
+over-reliance on AI tools could lead to the atrophy of fundamental
+design skills and a decline in critical thinking.\cite{ipm2025impact}
+The Orchestrated Diamond counteracts this by framing AI as a
+collaborator that elevates, rather than replaces, human expertise. The
+framework assigns distinct and cognitively demanding roles to the human
+at each stage---Strategist, Synthesizer, Creative Director, and
+Validator. These roles require a higher level of strategic thinking and
+critical judgment, shifting the designer\textquotesingle s value away
+from mere execution and towards orchestration and curation. This
+purposeful design of the human\textquotesingle s role is intended to
+foster a culture of "collaborative intelligence" where the human-AI team
+achieves more than either could alone.\cite{tandfonline2025collaborative}
+
+While the framework introduces new risks, its structure also serves as a
+risk mitigation tool. By mandating specific points of human control,
+synthesis, and validation, it prevents the "black box" problem of
+blindly trusting an AI from start to finish. It builds in the necessary
+checkpoints for human judgment, making the process itself a protocol for
+safety and ethical diligence.
+
+\subsection{Empirical Parallels and Case
+Studies}\label{empirical-parallels-and-case-studies}
+
+The principles underpinning the Orchestrated Diamond are not merely
+speculative; they are mirrored in the successful application of AI
+across various industries. These real-world case studies provide
+empirical validation for the framework\textquotesingle s phase-specific
+collaboration models.
+
+In \textbf{Product Development}, companies like BMW and Mercedes-Benz
+exemplify the "Develop" and "Deliver" phases. They use AI-driven
+generative design to explore thousands of optimized vehicle component
+designs based on performance and material constraints, a clear example
+of Mixed-Initiative Co-Creation.\cite{mindinventory2025role} They then use
+AI-powered computer vision for automated quality assurance on the
+assembly line and predictive maintenance in deployed vehicles, which
+mirrors the AI-Augmented Validation of the "Deliver"
+phase.\cite{mindinventory2025role}
+
+In \textbf{Service and Experience Design}, streaming giants like Netflix
+and Spotify demonstrate the full cycle. They use sophisticated AI to
+analyze massive datasets of user behavior to discover viewing patterns
+and define opportunities for new content or features
+(Discover/Define).\cite{mindinventory2025role} They then use AI to generate
+personalized content, such as custom thumbnails for movies or
+algorithmically curated playlists, which is a form of co-creating the
+user experience (Develop).\cite{logrocket2025designers} This shows a direct link
+between the type of human-AI collaboration employed and the specific
+business value generated---in this case, hyper-personalization and user
+engagement \cite{ibm2025ai}.
+
+In \textbf{Sustainable Architecture}, the framework\textquotesingle s
+principles are used to tackle complex, multi-variable problems. AI tools
+are used in the "Develop" phase to run simulations that generate
+building designs optimized for energy efficiency, daylighting, and
+sustainable material use, all within defined cost
+constraints.\cite{aecassociates2025transforming} This is a powerful example of using
+Mixed-Initiative Co-Creation to solve the DD\textquotesingle s
+feasibility gap. AI-driven monitoring systems are then used in completed
+buildings for predictive maintenance and real-time optimization of HVAC
+and lighting systems, an application of the "Deliver"
+phase\textquotesingle s validation and feedback
+loop.\cite{aecassociates2025transforming}
+
+Finally, in \textbf{Educational Content Development}, the entire
+Orchestrated Diamond is visible. AI is used to analyze student
+performance data to discover learning gaps and personalize learning
+journeys (Discover/Define).\cite{vktr2025ai} It is then used to
+generate draft content, quizzes, and instructional videos
+(Develop).\cite{vktr2025ai} Finally, AI automates the assessment and
+grading process, providing feedback to both students and educators,
+which closes the loop in the "Deliver" phase.\cite{frontiers2025developing}
+
+These cases demonstrate that a causal link exists between the
+collaboration model and the value created. The Orchestrated Diamond is
+the first framework to make this link explicit, providing a strategic
+tool for design teams to select the right collaborative approach to
+achieve a specific goal, whether it be efficiency, innovation, or
+quality.
+
+\section{Discussion: Evolving
+Terminology, Practice, and Future
+Trajectories}\label{section-6-discussion-evolving-terminology-practice-and-future-trajectories}
+
+\subsection{The Lexicon of Collaboration:
+Beyond
+"Augmented"}\label{the-lexicon-of-collaboration-beyond-augmented}
+
+The terminology used to describe new paradigms is critical, as it shapes
+understanding and adoption. The initial working title, "AI-Augmented
+Double Diamond" (AADD), while descriptive, is ultimately insufficient.
+The term "augmented" implies that AI is solely a subordinate tool that
+enhances an existing human-led process. This accurately describes the
+AITL mode of the "Discover" and "Define" phases, but it fails to capture
+the peer-level partnership of the Mixed-Initiative "Develop" phase or
+the AI-driven execution in the HITL "Deliver" phase. The relationship is
+more complex and dynamic than simple augmentation.
+
+A more precise and powerful term is \textbf{"The Orchestrated Diamond."}
+The concept of "orchestration" better reflects the
+designer\textquotesingle s new, elevated role.\cite{uxdesign2025why} An
+orchestrator is not just a performer but a conductor who manages a
+complex system of agents---both human and artificial---and skillfully
+guides their interaction. They are responsible for selecting the correct
+collaborative mode for each phase of the work, managing the flow of data
+and insights between them, and ensuring that all parts work in harmony
+to achieve a unified goal.\cite{uxdesign2025why} This term correctly
+positions the designer\textquotesingle s primary contribution as one of
+strategic management and creative direction, a role that is more
+critical than ever in an AI-infused environment. While alternatives like
+"Mixed-Initiative Diamond" or "Collaborative Diamond" capture aspects of
+the framework, "Orchestrated" uniquely conveys the active, managerial,
+and dynamic nature of the entire process.
+
+\subsection{The Evolving Designer: From
+Creator to
+Orchestrator}\label{the-evolving-designer-from-creator-to-orchestrator}
+
+The integration of AI as a collaborative partner precipitates a profound
+evolution in the role and skillset of the designer. The traditional
+emphasis on solitary creation and craft is shifting towards a new set of
+competencies centered on collaboration, strategy, and management. The
+designer of the future is less of a hands-on creator and more of a
+\textbf{strategic orchestrator} of a human-AI team.
+
+This role demands a new set of core competencies:
+
+\begin{itemize}
+\item
+  \textbf{AI Literacy and Prompt Engineering:} A fundamental
+  understanding of how different AI models work, their strengths, and
+  their limitations is now essential. The ability to craft effective
+  prompts that clearly communicate intent, context, and constraints to
+  an AI is becoming a critical design skill in
+  itself.\cite{researchgate2025thinking}
+\item
+  \textbf{Systems Thinking:} The modern design process is no longer a
+  linear path but a complex, interconnected workflow. Designers must be
+  able to think in terms of systems, understanding how to chain together
+  different AI tools, data pipelines, and human checkpoints to create a
+  seamless and efficient end-to-end process.\cite{uxdesign2025why}
+\item
+  \textbf{Ethical Guardianship and Critical Judgment:} As AI takes on
+  more of the generative work, the human\textquotesingle s role as an
+  ethical guardian becomes paramount. Designers must be adept at
+  identifying and mitigating algorithmic bias, ensuring data privacy,
+  and making the final call on whether a solution is not just effective
+  but also fair, transparent, and responsible.\cite{forrester2025design} This
+  includes the crucial skill of curation---the ability to critically
+  evaluate a sea of AI-generated options and apply human taste,
+  judgment, and strategic insight to select the most promising path
+  forward.
+\item
+  \textbf{Human-AI Teaming Skills:} Designers must learn how to
+  effectively collaborate with non-human agents. This includes building
+  trust in AI systems, understanding how to delegate tasks effectively,
+  and fostering a shared mental model with their AI
+  partners.\cite{pmc2025defining}
+\end{itemize}
+
+This evolution of the designer\textquotesingle s role is not unique; it
+serves as a powerful template for the future of knowledge work in
+general. Professionals in law, finance, marketing, and science will all
+need to transition from being individual contributors to becoming
+orchestrators of human-AI teams. The Orchestrated Diamond, therefore,
+can be seen not just as a framework for design, but as a case study in
+the future of collaborative, intelligent work.
+
+\subsection{Future Trajectories: Agentic
+AI and the "No-UI"
+Paradigm}\label{future-trajectories-agentic-ai-and-the-no-ui-paradigm}
+
+Looking forward, the Orchestrated Diamond framework is positioned to
+evolve with the next wave of AI technology. The current landscape is
+dominated by tools that perform specific tasks. The future points
+towards the rise of \textbf{agentic AI}---integrated systems that can
+autonomously understand high-level goals, break them down into
+sub-tasks, select their own tools, and execute complex, multi-step plans
+with minimal human intervention.\cite{nice2025forrester}
+
+In such a future, the Orchestrated Diamond might evolve significantly.
+Instead of a human designer orchestrating a collection of discrete AI
+tools (a summarizer, an image generator, a testing tool), they might
+collaborate with a single, powerful AI agent. This agent could fluidly
+switch its own internal modes, acting as a research assistant, a
+creative partner, and a testing engine as needed to accomplish the
+overarching goal set by the human.\cite{openai2025chatgpt} The
+human\textquotesingle s role as orchestrator would remain essential for
+setting the strategic direction and providing ethical oversight, but the
+"orchestra" would become a single, highly versatile virtuoso.
+
+This trajectory connects directly to the emerging concept of
+\textbf{"No-UI"} or "Invisible UI" in enterprise
+systems.\cite{sap2025interface} As AI becomes more proactive,
+conversational, and context-aware, the need for complex graphical user
+interfaces (GUIs) for many tasks may diminish.\cite{sap2025interface}
+Interaction will shift from clicking through menus to having a
+conversation or allowing an agent to act based on inferred intent. This
+suggests that the "Deliver" phase of the framework may, in the future,
+focus less on designing screens and more on designing conversations,
+agentic behaviors, and robust systems of intent.
+
+Ultimately, the very concept of a fixed, named design process like the
+"Double Diamond" or even the "Orchestrated Diamond" may be a
+transitional artifact. An advanced agentic AI could one day analyze a
+specific design challenge and dynamically construct a bespoke process on
+the fly, tailored perfectly to the problem, the team, and the available
+resources. It would create its own "diamond." Therefore, the framework
+proposed in this paper can be understood as a necessary scaffold---a
+structured model to help humans learn the principles of how to think
+about and orchestrate human-AI collaboration. Its ultimate success may
+be its own obsolescence, once humans have fully internalized these
+principles and AI has become capable enough to co-create not just the
+solution, but the process itself.
+
+\section{
+Conclusion}\label{section-7-conclusion}
+
+\subsection{Summary of
+Contributions}\label{summary-of-contributions}
+
+This paper has sought to bridge the growing chasm between established
+design methodologies and the transformative capabilities of modern
+Artificial Intelligence. In doing so, it has made several key
+contributions to the discourse on design theory and practice.
+
+First, it provided a comprehensive critique of the seminal Double
+Diamond process, synthesizing disparate criticisms to identify its core
+architectural flaw: a rigid, sequential structure that creates a
+temporal disconnect between problem-finding and solution-building,
+rendering it ill-suited for the iterative and complex demands of
+contemporary development.
+
+Second, it formalized the popular but informal "AI Sandwich" metaphor,
+grounding it in established Human-Computer Interaction theory and
+placing it within a broader \textbf{Spectrum of Agency}. This taxonomy,
+which clearly delineates between AI-in-the-Loop, Human-in-the-Loop, and
+Mixed-Initiative collaboration models, provides the rigorous theoretical
+foundation necessary for building structured, AI-integrated workflows.
+
+Third, based on this foundation, the paper proposed \textbf{The
+Orchestrated Diamond}, a novel framework that resolves the Double
+Diamond\textquotesingle s deficiencies by reconceptualizing its phases
+as distinct modes of human-AI collaboration. This model provides a
+practical, phase-specific guide for leveraging the right kind of AI
+partnership for the right design task.
+
+Fourth, the framework was validated through a multi-faceted analysis.
+Its benefits in overcoming the DD\textquotesingle s flaws were
+articulated, its inherent challenges related to bias, data, and skills
+were addressed with mitigation strategies, and its principles were
+grounded in reality through strong parallels with empirical case studies
+across multiple industries.
+
+Finally, the paper offered a forward-looking discussion on the profound
+implications of this new paradigm, arguing for an evolution in
+terminology from "augmentation" to "orchestration" and outlining the
+critical shift in the designer\textquotesingle s role from a hands-on
+creator to a strategic orchestrator of a human-AI team.
+
+\subsection{Final Statement: The Future
+of Design as Collaborative
+Orchestration}\label{final-statement-the-future-of-design-as-collaborative-orchestration}
+
+The integration of Artificial Intelligence into the creative process
+does not herald the obsolescence of the human designer; on the contrary,
+it elevates the role to one of unprecedented strategic importance. The
+future of design innovation lies not in the autonomous capabilities of
+AI alone, nor in the unassisted intuition of the human, but in our
+ability to skillfully, thoughtfully, and ethically orchestrate a new,
+synergistic partnership between human creativity and machine
+intelligence. The most valuable products, services, and systems of the
+coming decades will be born from this collaboration. The Orchestrated
+Diamond provides the first comprehensive map for navigating this
+exciting and transformative new landscape, offering a structured path
+for design teams to harness the power of AI not just to design things
+right, but to discover and develop the right things to design.
+
+% Print bibliography
+\printbibliography
+
+% MANUAL BIBLIOGRAPHY CONVERSION NEEDED
+% The following manual bibliography entries should be converted to BibTeX format
+% and added to references.bib. This is kept here temporarily for reference:
+\iffalse
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  AI enters the classroom as law schools prep students for a tech-driven
+  practice, accessed July 27, 2025,
+  \href{https://nationaljurist.com/prelaw/ai-enters-the-classroom-as-law-schools-prep-students-for-a-tech-driven-practice/}{\ul{https://nationaljurist.com/prelaw/ai-enters-the-classroom-as-law-schools-prep-students-for-a-tech-driven-practice/}}
+\item
+  How to Use AI to Enhance Engagement and Improve Learning ..., accessed
+  July 27, 2025,
+  \href{https://www.disco.co/blog/how-to-use-ai-to-enhance-engagement-and-improve-learning-outcomes}{\ul{https://www.disco.co/blog/how-to-use-ai-to-enhance-engagement-and-improve-learning-outcomes}}
+\item
+  Human-in-the-loop or AI-in-the-loop? Automate or Collaborate? - arXiv,
+  accessed July 27, 2025,
+  \href{https://arxiv.org/html/2412.14232v1}{\ul{https://arxiv.org/html/2412.14232v1}}
+\item
+  AI in the Loop vs Human in the Loop: A Technical Analysis of Hybrid
+  ..., accessed July 27, 2025,
+  \href{https://community.ibm.com/community/user/blogs/anuj-bahuguna/2025/05/25/ai-in-the-loop-vs-human-in-the-loop}{\ul{https://community.ibm.com/community/user/blogs/anuj-bahuguna/2025/05/25/ai-in-the-loop-vs-human-in-the-loop}}
+\item
+  Integrating Artificial Intelligence into Design Thinking: A
+  Comprehensive Examination of the Principles and Potentialities of AI
+  for Design Thinking Framework - InfoScience Trends, accessed July 27,
+  2025,
+  \href{https://www.isjtrend.com/article_199162.html}{\ul{https://www.isjtrend.com/article\_199162.html}}
+\item
+  The Intersection of Design Thinking and AI: Enhancing Innovation -
+  IDEO U, accessed July 27, 2025,
+  \href{https://www.ideou.com/blogs/inspiration/ai-and-design-thinking}{\ul{https://www.ideou.com/blogs/inspiration/ai-and-design-thinking}}
+\item
+  (PDF) Design Thinking and AI: A New Frontier for Designing Human ...,
+  accessed July 27, 2025,
+  \href{https://www.researchgate.net/publication/362317934_Design_Thinking_and_AI_A_New_Frontier_for_Designing_Human-Centered_AI_Solutions}{\ul{https://www.researchgate.net/publication/362317934\_Design\_Thinking\_and\_AI\_A\_New\_Frontier\_for\_Designing\_Human-Centered\_AI\_Solutions}}
+\item
+  -Triple diamond framework (source: authors) \textbar{} Download
+  Scientific Diagram - ResearchGate, accessed July 27, 2025,
+  \href{https://www.researchgate.net/figure/Triple-diamond-framework-source-authors_fig1_347731659}{\ul{https://www.researchgate.net/figure/Triple-diamond-framework-source-authors\_fig1\_347731659}}
+\item
+  Innovation by Design - Evolving the Double Diamond \textbar{} Equal
+  Experts, accessed July 27, 2025,
+  \href{https://www.equalexperts.com/blog/our-thinking/innovation-by-design-evolving-double-diamond/}{\ul{https://www.equalexperts.com/blog/our-thinking/innovation-by-design-evolving-double-diamond/}}
+\item
+  Triple Diamond method for problem solving and design thinking. Rubric
+  validation - Semantic Scholar, accessed July 27, 2025,
+  \href{https://pdfs.semanticscholar.org/cdf2/3133ec2bb071646dd34cfe038504edc681cd.pdf}{\ul{https://pdfs.semanticscholar.org/cdf2/3133ec2bb071646dd34cfe038504edc681cd.pdf}}
+\item
+  The double diamond is overrated and breeds unfeasible solutions,
+  change my mind - Reddit, accessed July 27, 2025,
+  \href{https://www.reddit.com/r/UserExperienceDesign/comments/ts32yw/the_double_diamond_is_overrated_and_breeds/}{\ul{https://www.reddit.com/r/UserExperienceDesign/comments/ts32yw/the\_double\_diamond\_is\_overrated\_and\_breeds/}}
+\item
+  Double Diamond Is Not How Most Companies Work - Smart Interface Design
+  Patterns, accessed July 27, 2025,
+  \href{https://smart-interface-design-patterns.com/articles/double-diamond-process/}{\ul{https://smart-interface-design-patterns.com/articles/double-diamond-process/}}
+\item
+  Why the double diamond isn\textquotesingle t enough \textbar{} by
+  adam23gray - UX Collective, accessed July 27, 2025,
+  \href{https://uxdesign.cc/why-the-double-diamond-isnt-enough-adaa48a8aec1}{\ul{https://uxdesign.cc/why-the-double-diamond-isnt-enough-adaa48a8aec1}}
+\item
+  What is AI Orchestration? \textbar{} IBM, accessed July 27, 2025,
+  \href{https://www.ibm.com/think/topics/ai-orchestration}{\ul{https://www.ibm.com/think/topics/ai-orchestration}}
+\item
+  What is AI Orchestration? A Clear Guide for Modern AI Workflows
+  \textbar{} Simplified, accessed July 27, 2025,
+  \href{https://simplified.com/blog/automation/ai-orchestration}{\ul{https://simplified.com/blog/automation/ai-orchestration}}
+\item
+  AI in Architectural Design - Real-World Examples ..., accessed July
+  27, 2025,
+  \href{https://www.architecturecourses.org/ai/ai-architectural-design-real-world-examples}{\ul{https://www.architecturecourses.org/ai/ai-architectural-design-real-world-examples}}
+\item
+  Maximizing AI Investment: A Guide to Measuring ROI Effectively - SAI
+  Digital, accessed July 27, 2025,
+  \href{https://www.sai-digital.com/articles/Measuring-the-ROI-of-AI}{\ul{https://www.sai-digital.com/articles/Measuring-the-ROI-of-AI}}
+\item
+  Trust and UI Design: The Heart of Human-AI Teaming - LMI, accessed
+  July 27, 2025,
+  \href{https://lmisolutions.com/blog/trust-and-ui-design-heart-human-ai-teaming}{\ul{https://lmisolutions.com/blog/trust-and-ui-design-heart-human-ai-teaming}}
+\item
+  (PDF) Human-AI collaboration by design - ResearchGate, accessed July
+  27, 2025,
+  \href{https://www.researchgate.net/publication/380658063_Human-AI_collaboration_by_design}{\ul{https://www.researchgate.net/publication/380658063\_Human-AI\_collaboration\_by\_design}}
+\item
+  Looking ahead: The future of AI-driven workflows - IT Brief Australia,
+  accessed July 27, 2025,
+  \href{https://itbrief.com.au/story/looking-ahead-the-future-of-ai-driven-workflows}{\ul{https://itbrief.com.au/story/looking-ahead-the-future-of-ai-driven-workflows}}
+\item
+  Forrester Report: Agentic AI Turns Generative AI Words into Action
+  ..., accessed July 27, 2025,
+  \href{https://www.nice.com/resources/forrester-report-with-agentic-ai-generative-ai-is-evolving-from-words-to-actions}{\ul{https://www.nice.com/resources/forrester-report-with-agentic-ai-generative-ai-is-evolving-from-words-to-actions}}
+\item
+  Where did the interface go - SAP, accessed July 27, 2025,
+  \href{https://www.sap.com/design/stories-resources/where-did-the-interface-go}{\ul{https://www.sap.com/design/stories-resources/where-did-the-interface-go}}
+\item
+  The Rise of AI and Automation in Enterprise System Functionality ...,
+  accessed July 27, 2025,
+  \href{https://cogleus.com/the-rise-of-ai-and-automation-in-enterprise-system-functionality-enhancing-operations-for-the-future/}{\ul{https://cogleus.com/the-rise-of-ai-and-automation-in-enterprise-system-functionality-enhancing-operations-for-the-future/}}
+\item
+  (PDF) The Evolution of Automation in IT Operations: From Basic Scripts
+  to AI-Powered Solutions - ResearchGate, accessed July 27, 2025,
+  \href{https://www.researchgate.net/publication/388910312_The_Evolution_of_Automation_in_IT_Operations_From_Basic_Scripts_to_AI-Powered_Solutions}{\ul{https://www.researchgate.net/publication/388910312\_The\_Evolution\_of\_Automation\_in\_IT\_Operations\_From\_Basic\_Scripts\_to\_AI-Powered\_Solutions}}
+\item
+  How Intelligent Process Automation is Revolutionizing Enterprise
+  Operations, accessed July 27, 2025,
+  \href{https://hexaware.com/blogs/intelligent-process-automation-revolutionizing-enterprise-operations/}{\ul{https://hexaware.com/blogs/intelligent-process-automation-revolutionizing-enterprise-operations/}}
+\item
+  The state of AI: How organizations are rewiring to capture value -
+  McKinsey, accessed July 27, 2025,
+  \href{https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai}{\ul{https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai}}
+\item
+  Generative AI: What Is It, Tools, Models, Applications and Use Cases,
+  accessed July 27, 2025,
+  \href{https://www.gartner.com/en/topics/generative-ai}{\ul{https://www.gartner.com/en/topics/generative-ai}}
+\item
+  en.wikipedia.org, accessed July 27, 2025,
+  \href{https://en.wikipedia.org/wiki/Double_Diamond_(design_process_model)\#:~:text=Double\%20Diamond\%20is\%20the\%20name,B\%C3\%A1n\%C3\%A1thy.}{\ul{https://en.wikipedia.org/wiki/Double\_Diamond\_(design\_process\_model)\#:\textasciitilde:text=Double\%20Diamond\%20is\%20the\%20name,B\%C3\%A1n\%C3\%A1thy.}}
+\item
+  Double Diamond (design process model) - Wikipedia, accessed July 27,
+  2025,
+  \href{https://en.wikipedia.org/wiki/Double_Diamond_(design_process_model)}{\ul{https://en.wikipedia.org/wiki/Double\_Diamond\_(design\_process\_model)}}
+\item
+  History of the Double Diamond - Design Council, accessed July 27,
+  2025,
+  \href{https://www.designcouncil.org.uk/our-resources/the-double-diamond/history-of-the-double-diamond/}{\ul{https://www.designcouncil.org.uk/our-resources/the-double-diamond/history-of-the-double-diamond/}}
+\item
+  The Double Diamond design process --- still fit for purpose?
+  \textbar{} by ..., accessed July 27, 2025,
+  \href{https://medium.com/design-council/the-double-diamond-design-process-still-fit-for-purpose-fc619bbd2ad3}{\ul{https://medium.com/design-council/the-double-diamond-design-process-still-fit-for-purpose-fc619bbd2ad3}}
+\item
+  Symbiotic Intelligence: The Future Where Humans and AI Unite
+  \textbar{} by Eddi Weinwurm, accessed July 27, 2025,
+  \href{https://medium.com/@weinwurm/symbiotic-intelligence-the-future-where-humans-and-ai-unite-0e64eaec6ea1}{\ul{https://medium.com/@weinwurm/symbiotic-intelligence-the-future-where-humans-and-ai-unite-0e64eaec6ea1}}
+\item
+  The Double Diamond Process: From Problems to Solutions \textbar{}
+  Maze, accessed July 27, 2025,
+  \href{https://maze.co/blog/double-diamond-design-process/}{\ul{https://maze.co/blog/double-diamond-design-process/}}
+\item
+  The limitations of the Double Diamond - Dan Ramsden - Design leader,
+  professional coach, information architecture specialist, magician,
+  accessed July 27, 2025,
+  \href{https://danramsden.com/2023/07/26/the-limitations-of-the-double-diamond/}{\ul{https://danramsden.com/2023/07/26/the-limitations-of-the-double-diamond/}}
+\item
+  The Double Diamond method: its history and current uses - Klaxoon,
+  accessed July 27, 2025,
+  \href{https://klaxoon.com/insight/the-double-diamond-method-its-history-and-current-uses}{\ul{https://klaxoon.com/insight/the-double-diamond-method-its-history-and-current-uses}}
+\item
+  What Exactly Is Product Design - Eleken, accessed July 27, 2025,
+  \href{https://www.eleken.co/blog-posts/what-is-product-design}{\ul{https://www.eleken.co/blog-posts/what-is-product-design}}
+\item
+  Model Context Protocol: Taming the AI Beast Without a PhD - Johnny
+  Bilotta, accessed July 27, 2025,
+  \href{https://johnnybilotta.com/post/250515-mcp-taming-the-ai-beast/}{\ul{https://johnnybilotta.com/post/250515-mcp-taming-the-ai-beast/}}
+\item
+  What is Human-in-the-Loop (HITL) in AI \& ML - Google Cloud, accessed
+  July 27, 2025,
+  \href{https://cloud.google.com/discover/human-in-the-loop}{\ul{https://cloud.google.com/discover/human-in-the-loop}}
+\item
+  Putting a human in the loop: Increasing uptake, but decreasing
+  accuracy of automated decision-making - PMC, accessed July 27, 2025,
+  \href{https://pmc.ncbi.nlm.nih.gov/articles/PMC10857587/}{\ul{https://pmc.ncbi.nlm.nih.gov/articles/PMC10857587/}}
+\item
+  Mixed-Initiative Systems for Collaborative Problem Solving \textbar{}
+  AI Magazine, accessed July 27, 2025,
+  \href{https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/2037}{\ul{https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/2037}}
+\item
+  Boosting Mixed-Initiative Co-Creativity in Game Design: A Tutorial -
+  ResearchGate, accessed July 27, 2025,
+  \href{https://www.researchgate.net/publication/377435724_Boosting_Mixed-Initiative_Co-Creativity_in_Game_Design_A_Tutorial}{\ul{https://www.researchgate.net/publication/377435724\_Boosting\_Mixed-Initiative\_Co-Creativity\_in\_Game\_Design\_A\_Tutorial}}
+\item
+  On Mixed-Initiative Content Creation for Video Games - Goldsmiths
+  Research Online, accessed July 27, 2025,
+  \href{https://research.gold.ac.uk/id/eprint/38005/1/On_Mixed-Initiative_Content_Creation_for_Video_Games.pdf}{\ul{https://research.gold.ac.uk/id/eprint/38005/1/On\_Mixed-Initiative\_Content\_Creation\_for\_Video\_Games.pdf}}
+\item
+  Beyond Following: Mixing Active Initiative into Computational
+  Creativity - CEUR-WS.org, accessed July 27, 2025,
+  \href{https://ceur-ws.org/Vol-3926/paper6.pdf}{\ul{https://ceur-ws.org/Vol-3926/paper6.pdf}}
+\item
+  Design implications for Designing with a Collaborative AI -
+  ResearchGate, accessed July 27, 2025,
+  \href{https://www.researchgate.net/publication/318900744_Design_implications_for_Designing_with_a_Collaborative_AI}{\ul{https://www.researchgate.net/publication/318900744\_Design\_implications\_for\_Designing\_with\_a\_Collaborative\_AI}}
+\item
+  Defining human-AI teaming the human-centered way: a scoping review and
+  network analysis - PMC - PubMed Central, accessed July 27, 2025,
+  \href{https://pmc.ncbi.nlm.nih.gov/articles/PMC10570436/}{\ul{https://pmc.ncbi.nlm.nih.gov/articles/PMC10570436/}}
+\item
+  Collaborative Intelligence Explained: How Humans and AI Work Smarter
+  Together, accessed July 27, 2025,
+  \href{https://www.automationanywhere.com/company/blog/automation-ai/collaborative-intelligence-explained-how-humans-and-ai-work-smarter}{\ul{https://www.automationanywhere.com/company/blog/automation-ai/collaborative-intelligence-explained-how-humans-and-ai-work-smarter}}
+\item
+  Full article: Collaborative Intelligence: A Scoping Review Of Current
+  Applications, accessed July 27, 2025,
+  \href{https://www.tandfonline.com/doi/full/10.1080/08839514.2024.2327890}{\ul{https://www.tandfonline.com/doi/full/10.1080/08839514.2024.2327890}}
+\item
+  Exploring Human-AI Collaboration in Creative Industries - SmythOS,
+  accessed July 27, 2025,
+  \href{https://smythos.com/ai-trends/human-ai-collaboration-in-creative-industries/}{\ul{https://smythos.com/ai-trends/human-ai-collaboration-in-creative-industries/}}
+\item
+  Collaborative Intelligence \textbar{} How Humans \& AI Work Together?
+  - InvoZone, accessed July 27, 2025,
+  \href{https://invozone.com/blog/collaborative-intelligence/}{\ul{https://invozone.com/blog/collaborative-intelligence/}}
+\item
+  Navigating the Era of Collaborative Intelligence: Humans and AI in
+  Concert - Medium, accessed July 27, 2025,
+  \href{https://medium.com/@techmsy/navigating-the-era-of-collaborative-intelligence-humans-and-ai-in-concert-e95cc65070a8}{\ul{https://medium.com/@techmsy/navigating-the-era-of-collaborative-intelligence-humans-and-ai-in-concert-e95cc65070a8}}
+\item
+  Conversational UI: 6 Best Practices in 2025 - AIMultiple, accessed
+  July 27, 2025,
+  \href{https://research.aimultiple.com/conversational-ui/}{\ul{https://research.aimultiple.com/conversational-ui/}}
+\item
+  Combining Design Thinking and Generative AI Technologies in The
+  Classroom: A Project-Based Learning Approach - Manifold @CUNY,
+  accessed July 27, 2025,
+  \href{https://cuny.manifoldapp.org/read/combining-design-thinking-and-generative-ai-technologies-in-the-classroom/section/52735f7f-8a08-4690-8926-a08ba5e8cf73}{\ul{https://cuny.manifoldapp.org/read/combining-design-thinking-and-generative-ai-technologies-in-the-classroom/section/52735f7f-8a08-4690-8926-a08ba5e8cf73}}
+\item
+  AI Workflow - IBM, accessed July 27, 2025,
+  \href{https://www.ibm.com/think/topics/ai-workflow}{\ul{https://www.ibm.com/think/topics/ai-workflow}}
+\item
+  The Impact of AI on Team Development \textbar{} IPM, accessed July 27,
+  2025,
+  \href{https://instituteprojectmanagement.com/blog/the-impact-of-ai-on-team-development/}{\ul{https://instituteprojectmanagement.com/blog/the-impact-of-ai-on-team-development/}}
+\item
+  ROI of AI: Key Drivers, KPIs \& Challenges \textbar{} DataCamp,
+  accessed July 27, 2025,
+  \href{https://www.datacamp.com/blog/roi-of-ai}{\ul{https://www.datacamp.com/blog/roi-of-ai}}
+\item
+  (PDF) Design Thinking with AI - ResearchGate, accessed July 27, 2025,
+  \href{https://www.researchgate.net/publication/381977036_Design_Thinking_with_AI}{\ul{https://www.researchgate.net/publication/381977036\_Design\_Thinking\_with\_AI}}
+\item
+  The Impact of Artificial Intelligence on Design: Enhancing Creativity
+  and Efficiency, accessed July 27, 2025,
+  \href{https://www.researchgate.net/publication/384953179_The_Impact_of_Artificial_Intelligence_on_Design_Enhancing_Creativity_and_Efficiency}{\ul{https://www.researchgate.net/publication/384953179\_The\_Impact\_of\_Artificial\_Intelligence\_on\_Design\_Enhancing\_Creativity\_and\_Efficiency}}
+\item
+  Design GenAI-Powered Experiences Responsibly - Forrester, accessed
+  July 27, 2025,
+  \href{https://www.forrester.com/blogs/design-genai-powered-experiences-responsibly/}{\ul{https://www.forrester.com/blogs/design-genai-powered-experiences-responsibly/}}
+\item
+  Here\textquotesingle s how designers are using AI in product design -
+  LogRocket Blog, accessed July 27, 2025,
+  \href{https://blog.logrocket.com/ux-design/how-designers-use-ai-product-design/}{\ul{https://blog.logrocket.com/ux-design/how-designers-use-ai-product-design/}}
+\item
+  Developing a design thinking artificial intelligence driven
+  auto-marking/grading system for assessments to reduce the workload o -
+  Frontiers, accessed July 27, 2025,
+  \href{https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2024.1512569/pdf}{\ul{https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2024.1512569/pdf}}
+\item
+  How AI Is Transforming Sustainable Architectural Design In The USA -
+  The AEC Associates, accessed July 27, 2025,
+  \href{https://theaecassociates.com/blog/ai-sustainable-architectural-design/}{\ul{https://theaecassociates.com/blog/ai-sustainable-architectural-design/}}
+\item
+  Ethics of Artificial Intelligence \textbar{} UNESCO, accessed July 27,
+  2025,
+  \href{https://www.unesco.org/en/artificial-intelligence/recommendation-ethics}{\ul{https://www.unesco.org/en/artificial-intelligence/recommendation-ethics}}
+\item
+  Intersection between Design Thinking \& AI Thinking - Onething Design,
+  accessed July 27, 2025,
+  \href{https://www.onething.design/post/ai-thinking-in-design}{\ul{https://www.onething.design/post/ai-thinking-in-design}}
+\item
+  The Role of AI In Product Development: A Detailed Analysis, accessed
+  July 27, 2025,
+  \href{https://www.mindinventory.com/blog/ai-in-product-development/}{\ul{https://www.mindinventory.com/blog/ai-in-product-development/}}
+\item
+  Case Studies: Successful Customer Experience (CX) with AI
+  Implementation, accessed July 27, 2025,
+  \href{https://www.renascence.io/journal/case-studies-successful-customer-experience-cx-with-ai-implementation}{\ul{https://www.renascence.io/journal/case-studies-successful-customer-experience-cx-with-ai-implementation}}
+\item
+  5 AI Case Studies in Education \textbar{} VKTR, accessed July 27,
+  2025,
+  \href{https://www.vktr.com/ai-disruption/5-ai-case-studies-in-education/}{\ul{https://www.vktr.com/ai-disruption/5-ai-case-studies-in-education/}}
+\item
+  6 AI Use Cases in Educational Content Creation - Ease Learning,
+  accessed July 27, 2025,
+  \href{https://easelearning.com/all-posts/6-ai-use-cases-in-educational-content-creation/}{\ul{https://easelearning.com/all-posts/6-ai-use-cases-in-educational-content-creation/}}
+\item
+  How Effective is AI in Education? 10 Case Studies and Examples - Axon
+  Park, accessed July 27, 2025,
+  \href{https://axonpark.com/how-effective-is-ai-in-education-10-case-studies-and-examples/}{\ul{https://axonpark.com/how-effective-is-ai-in-education-10-case-studies-and-examples/}}
+\item
+  AI Workflow UI: Design, Management \& Automation \textbar{} Fuselab
+  Creative, accessed July 27, 2025,
+  \href{https://fuselabcreative.com/ai-workflow-ui-design-management-automation/}{\ul{https://fuselabcreative.com/ai-workflow-ui-design-management-automation/}}
+\item
+  Human-AI Teaming: Definition, Strategies, and More \textbar{} CO- by
+  US Chamber of Commerce, accessed July 27, 2025,
+  \href{https://www.uschamber.com/co/run/technology/human-ai-teaming}{\ul{https://www.uschamber.com/co/run/technology/human-ai-teaming}}
+\item
+  Introducing ChatGPT agent: bridging research and action - OpenAI,
+  accessed July 27, 2025,
+  \href{https://openai.com/index/introducing-chatgpt-agent/}{\ul{https://openai.com/index/introducing-chatgpt-agent/}}
+\item
+  Agentic Workflows: How Autonomous AI Executes Complex Tasks - Triple
+  Whale, accessed July 27, 2025,
+  \href{https://www.triplewhale.com/blog/agentic-workflows}{\ul{https://www.triplewhale.com/blog/agentic-workflows}}
+\item
+  No UI is the New UI : Towards Future Transparent Interactions -
+  NASSCOM Community, accessed July 27, 2025,
+  \href{https://community.nasscom.in/communities/emerging-tech/no-ui-new-ui-towards-future-transparent-interactions}{\ul{https://community.nasscom.in/communities/emerging-tech/no-ui-new-ui-towards-future-transparent-interactions}}
+\item
+  The end of UI as we know it. How AI is shaping a future beyond\ldots{}
+  \textbar{} by Remco Snijders \textbar{} Bootcamp \textbar{} Medium,
+  accessed July 27, 2025,
+  \href{https://medium.com/design-bootcamp/the-end-of-ui-as-we-know-it-c5ec6e983aa1}{\ul{https://medium.com/design-bootcamp/the-end-of-ui-as-we-know-it-c5ec6e983aa1}}
+\end{enumerate}
+\fi
+
+\end{document}

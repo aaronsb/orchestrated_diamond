@@ -1,0 +1,20 @@
+# TeXFlow auxiliary files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.log
+*.run.xml
+*.toc
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+
+# TeXFlow project files
+.texflow_project.json
+.claude-tracking
+.claude/
+
+# Temporary files
+*~
+.DS_Store
